@@ -13,7 +13,21 @@ export class ProductService {
     return this.db.list('/products').push(product);
   }
 
+  update(productId, product) {
+    return this.db.object('/products/' + productId)
+      .update(product);
+  }
+
+  delete(productId) {
+    return this.db.object('/products/' + productId)
+      .remove();
+  }
+
   getAll() {
     return this.db.list('/products');
+  }
+
+  getOne(id: string) {
+    return this.db.object('/products/' + id);
   }
 }
